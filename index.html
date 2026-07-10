@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Self-Storage Manager</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Supabase JS Client (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <div id="app" class="min-h-screen bg-gray-50">
+    <!-- UI goes here later -->
+  </div>
+
+  <script>
+    // ============================================
+    // SUPABASE CLIENT INITIALIZATION
+    // ============================================
+    const SUPABASE_URL = 'https://supabase.com/dashboard/project/dowxrsphkebyctkfkgph';       // e.g. https://xxxxx.supabase.co
+    const SUPABASE_KEY = 'sb_publishable_tgXBLc0nbpgat2Lds9tlbw_zX_mrTYXY';  // the 'anon' public key, NOT the service_role key
+
+    const { createClient } = supabase; // 'supabase' is the global exposed by the CDN script
+    const db = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // ============================================
+    // QUICK CONNECTION TEST (optional, remove later)
+    // ============================================
+    async function testConnection() {
+      const { data, error } = await db.from('projects').select('*').limit(1);
+      if (error) {
+        console.error('Supabase connection error:', error.message);
+      } else {
+        console.log('Supabase connected. Sample data:', data);
+      }
+    }
+
+    testConnection();
+  </script>
+
+</body>
+</html>
